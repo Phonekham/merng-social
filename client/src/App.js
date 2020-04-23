@@ -8,17 +8,21 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import MenuBar from "./components/MenuBar";
+import { AuthProvider } from "./context/auth";
+import AuthRoute from "./utils/AuthRoute";
 
 function App() {
   return (
-    <Router>
-      <Container>
-        <MenuBar></MenuBar>
-        <Route exact path="/" component={Home}></Route>
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/register" component={Register}></Route>
-      </Container>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Container>
+          <MenuBar></MenuBar>
+          <Route exact path="/" component={Home}></Route>
+          <AuthRoute exact path="/login" component={Login}></AuthRoute>
+          <AuthRoute exact path="/register" component={Register}></AuthRoute>
+        </Container>
+      </Router>
+    </AuthProvider>
   );
 }
 
