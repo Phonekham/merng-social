@@ -7,6 +7,8 @@ const resolvers = require("./graphql/resolvers");
 
 const pubsub = new PubSub();
 
+const PORT = process.env.port || 5000;
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -20,7 +22,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then((res) => {
-    return server.listen({ port: 5000 });
+    return server.listen({ port: PORT });
   })
   .then((res) => {
     console.log(`Server is running on ${res.url}`);
