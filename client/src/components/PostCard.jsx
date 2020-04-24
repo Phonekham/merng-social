@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth";
 import LikeButton from "./LikeButton";
+import MyPopup from "../utils/MyPopup";
 
 const PostCard = ({
   post: { id, body, createdAt, username, likeCount, commentCount, likes },
@@ -27,14 +28,16 @@ const PostCard = ({
       </Card.Content>
       <Card.Content extra>
         <LikeButton user={user} post={{ id, likes, likeCount }}></LikeButton>
-        <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
-          <Button color="blue">
-            <Icon name="comments" />
+        <MyPopup content="Comment on post">
+          <Button labelPosition="right" as={Link} to={`/posts/${id}`}>
+            <Button color="blue">
+              <Icon name="comments" />
+            </Button>
+            <Label basic color="blue" pointing="left">
+              {commentCount}
+            </Label>
           </Button>
-          <Label basic color="blue" pointing="left">
-            {commentCount}
-          </Label>
-        </Button>
+        </MyPopup>
         {user && user.username === username && (
           <Button
             floated="right"
