@@ -7,25 +7,9 @@ import { AuthContext } from "../context/auth";
 import LikeButton from "./LikeButton";
 
 const PostCard = ({
-  post: {
-    id,
-    body,
-    createdAt,
-    username,
-    likeCount,
-    commentCount,
-    likes,
-    comments,
-  },
+  post: { id, body, createdAt, username, likeCount, commentCount, likes },
 }) => {
   const { user } = useContext(AuthContext);
-
-  const likePost = () => {
-    console.log("like post");
-  };
-  const commentOnPost = () => {
-    console.log("comment post");
-  };
 
   return (
     <Card fluid>
